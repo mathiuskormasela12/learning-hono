@@ -1,0 +1,21 @@
+version: "3.8"
+
+volumes:
+  mongodb-vol:
+    name: mongodb-vol
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - protocol: tcp
+        target: 27017
+        published: 27017
+    volumes:
+      - type: volume
+        target: /data/db
+        source: mongodb-vol
